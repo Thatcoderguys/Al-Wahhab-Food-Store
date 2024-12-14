@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al Wahhab Food Store</title>
+    <style>
+        /* General body styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Title styling */
+        h1 {
+            background-color: #000;  /* Black background */
+            color: white;  /* White text */
+            padding: 20px;
+            text-align: center;
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        /* Paragraph styling */
+        p {
+            font-size: 1.1em;
+            line-height: 1.6em;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Link styling */
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Image gallery styling */
+        #imageGallery {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image {
+            width: 80%;
+            max-width: 600px;
+            margin: 10px;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .image:hover {
+            transform: scale(1.05);
+        }
+
+        /* Button styling */
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        /* Google map styling */
+        #map {
+            width: 100%;
+            height: 400px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        /* Footer styling */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            font-size: 1em;
+        }
+
+        footer a {
+            color: #ff9800;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Al Wahhab Food Store</h1>
+    
+    <!-- Image should be placed separately, not inside <h1> -->
+    <img src="yo" alt="Al Wahhab Food Store" /> <!-- Provide a valid image source -->
+
+    <p>Our Store Al Wahhab is great and is currently getting positive reviews with 4.9⭐ stars. Contact or order by Phone: <a href="tel:01316520222">01316520222</a></p>
+
+    <h3>We are located at this location on Google Maps:</h3>
+    <a href="https://www.google.co.uk/maps/place/Al-Wahhab+Food+Store/@55.9572177,-3.1709765,17z/data=!3m1!4b1!4m6!3m5!1s0x4887b9ac65e1a855:0xc8fe92b63f82058b!8m2!3d55.9572147!4d-3.1684016!16s%2Fg%2F11qn9kb640?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D">
+        Our Location on Google Maps
+    </a>
+
+    <hr>
+    
+    <!-- Button to display phone number -->
+    <button id="changeTextButton">Show Phone Number</button>
+    <p id="demo"></p>
+
+    <hr>
+    
+    <!-- Image Gallery -->
+    <div id="imageGallery">
+        <img src="20201101_125017.jpg" alt="Image 1" class="image" />
+        <img src="2023-12-16.jpg" alt="Image 2" class="image" style="display:none;" />
+        <img src="2023-12-16 (1).jpg" alt="Image 3" class="image" style="display:none;" />
+        <img src="2023-12-16 (2).jpg" alt="Image 4"  class="image" style="display:none;" />
+    </div>
+    <button onclick="nextImage()">Next Image</button>
+
+    <hr>
+    
+    <!-- Google Map Embed -->
+    <div id="map"></div>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <p>&copy; <span id="year"></span> Al Wahhab Food Store. All rights reserved.</p>
+        <p>Visit our <a href="https://www.example.com">website</a> for more info.</p>
+    </footer>
+
+    <!-- JavaScript Code -->
+    <script>
+        // Alert when the page loads
+        window.onload = function() {
+            alert('Welcome to Al Wahhab Food Store!');
+        };
+
+        // Change text on button click (Show phone number)
+        document.getElementById('changeTextButton').addEventListener('click', function() {
+            document.getElementById('demo').innerHTML = 'Call us at: <a href="tel:01316520222">01316520222</a>'; // Make the number clickable
+        });
+
+        // Image gallery slideshow functionality
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('.image');
+        
+        function nextImage() {
+            images[currentImageIndex].style.display = 'none'; // Hide the current image
+            currentImageIndex = (currentImageIndex + 1) % images.length; // Loop back to the first image
+            images[currentImageIndex].style.display = 'block'; // Show the next image
+        }
+
+        // Dynamically generate footer content with current year
+        const footer = document.getElementById('footer');
+        const currentYear = new Date().getFullYear();
+        document.getElementById('year').textContent = currentYear;
+
+        // Google Maps initialization (replace YOUR_API_KEY with a valid API key)
+        function initMap() {
+            var location = { lat: 55.9572177, lng: -3.1709765 }; // Latitude and Longitude of your store
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: location
+            });
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+        }
+    </script>
+
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+</body>
+</html>
